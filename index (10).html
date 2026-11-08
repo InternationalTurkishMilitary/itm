@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ITM – Roblox Askeri Oyunu</title>
+<meta name="description" content="ITM – International Turkish Military. Roblox askeri RP oyunu.">
+<meta name="theme-color" content="#12150e">
+<style>
+:root{--bg:#eceee2;--surface:#fbfbf4;--text:#161b12;--muted:#58614c;--accent:#4f6a22;--accent2:#b8860b;--on:#fff;--line:#c9ccb8;--glow:rgba(79,106,34,.18);--hd:rgba(236,238,226,.85);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0e08;--surface:#151a0f;--text:#e9ecdc;--muted:#9aa388;--accent:#9bbd4a;--accent2:#e0b341;--on:#0b0e08;--line:#2b3420;--glow:rgba(155,189,74,.16);--hd:rgba(11,14,8,.8)}}
+:root[data-theme="dark"]{--bg:#0b0e08;--surface:#151a0f;--text:#e9ecdc;--muted:#9aa388;--accent:#9bbd4a;--accent2:#e0b341;--on:#0b0e08;--line:#2b3420;--glow:rgba(155,189,74,.16);--hd:rgba(11,14,8,.8)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);backdrop-filter:blur(10px);z-index:60}
+.bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 60% 50% at 20% 10%,var(--glow),transparent 70%),radial-gradient(ellipse 50% 40% at 85% 70%,var(--glow),transparent 70%),var(--bg)}
+.bg::before{content:"";position:absolute;inset:-60px;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;opacity:.45;animation:drift 20s linear infinite;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 80%)}
+.bg::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.05) 3px 4px);pointer-events:none}
+@keyframes drift{to{transform:translate(60px,60px)}}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:var(--hd);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{font-weight:900;letter-spacing:.2em;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;gap:10px}
+.logo i{width:14px;height:14px;background:var(--accent);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.burger{width:44px;height:44px;border:1px solid var(--line);background:var(--surface);display:grid;place-content:center;gap:5px;cursor:pointer}
+.burger span{display:block;width:22px;height:2px;background:var(--text);transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:.3s;z-index:70}
+.ov.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(320px,85vw);background:var(--surface);border-left:2px solid var(--accent);z-index:80;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);padding:calc(env(safe-area-inset-top,0px) + 24px) 24px 24px;display:flex;flex-direction:column;gap:6px}
+.drawer.open{transform:none}
+.drawer small{color:var(--accent);letter-spacing:.25em;font-size:.7rem;margin-bottom:10px}
+.drawer a{color:var(--text);text-decoration:none;padding:14px 12px;border-bottom:1px solid var(--line);font-weight:600;letter-spacing:.05em;display:flex;justify-content:space-between;cursor:pointer;transition:.2s}
+.drawer a:hover{color:var(--accent);padding-left:20px}
+.drawer a.hi{background:var(--accent);color:var(--on);margin-top:12px;border:0}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+.view{display:none;animation:in .5s ease}
+.view.active{display:block}
+@keyframes in{from{opacity:0;transform:translateY(14px)}}
+.hero{min-height:82vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 0}
+.tag{border:1px solid var(--accent);color:var(--accent);padding:5px 14px;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase}
+.tag::after{content:"_";animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+h1{font-size:clamp(4rem,22vw,10rem);margin:16px 0 4px;line-height:1;letter-spacing:.12em;font-weight:900;background:linear-gradient(135deg,var(--text) 30%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);max-width:520px;margin:0 auto 30px;font-size:1.05rem}
+.btn{display:inline-block;background:var(--accent);color:var(--on);padding:14px 30px;font-weight:800;letter-spacing:.1em;text-decoration:none;margin:5px;border:2px solid var(--accent);cursor:pointer;font-size:.9rem;font-family:inherit;transition:.25s;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.btn:hover{transform:translateY(-3px);filter:brightness(1.1)}
+.btn.alt{background:transparent;color:var(--text);border-color:var(--line)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:0 0 20px}
+.stat{background:var(--surface);padding:22px;text-align:center}
+.stat b{display:block;font-size:2rem;color:var(--accent)}
+.stat span{color:var(--muted);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase}
+section{padding:56px 0}
+h2{font-size:1.6rem;letter-spacing:.15em;text-transform:uppercase;margin:0 0 8px}
+h2+p{color:var(--muted);margin:0 0 28px;max-width:600px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:var(--surface);padding:24px;border:1px solid var(--line);position:relative;overflow:hidden;transition:.3s}
+.card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 30px var(--glow)}
+.card em{font-style:normal;position:absolute;top:8px;right:14px;font-size:2.6rem;font-weight:900;color:var(--line)}
+.card h3{margin:0 0 8px;color:var(--accent);letter-spacing:.05em}
+.card p,.card li{margin:0;color:var(--muted);font-size:.93rem}
+.card ul{margin:0;padding-left:18px}
+ol.rules{counter-reset:r;list-style:none;padding:0;margin:0}
+ol.rules li{counter-increment:r;padding:16px 16px 16px 64px;position:relative;border-bottom:1px solid var(--line);color:var(--muted)}
+ol.rules li::before{content:counter(r,decimal-leading-zero);position:absolute;left:12px;top:12px;font-size:1.6rem;font-weight:900;color:var(--accent)}
+.login{min-height:85vh;display:grid;place-items:center;padding:40px 0}
+.box{width:min(420px,100%);background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);padding:34px 28px;box-shadow:0 20px 50px var(--glow)}
+.box h2{margin-bottom:4px}
+.box p{color:var(--muted);margin:0 0 22px;font-size:.9rem}
+label{display:block;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+input{width:100%;padding:13px 14px;background:var(--bg);color:var(--text);border:1px solid var(--line);font-size:1rem;font-family:inherit;outline:none;transition:.2s}
+input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+.err{color:#d2402e;font-size:.85rem;min-height:1.3em;margin-top:10px}
+.box .btn{width:100%;margin:10px 0 0;clip-path:none}
+.welcome{padding:48px 0 12px}
+.welcome h2{font-size:clamp(1.6rem,6vw,2.4rem)}
+.badge{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase}
+.badge::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:bl 1.4s infinite}
+.card li{margin-bottom:8px}
+.alt-l{margin-top:18px;text-align:center;color:var(--muted);font-size:.88rem}.alt-l a{color:var(--accent);cursor:pointer;font-weight:700}
+.cmds{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:0 0 36px}.cmd{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent2);padding:14px 16px}.cmd b{display:block;letter-spacing:.08em;color:var(--accent2)}.cmd span{color:var(--muted);font-size:.9rem}h3.sh{letter-spacing:.15em;text-transform:uppercase;font-size:1rem;color:var(--accent);margin:0 0 12px}
+.drawer{overflow-y:auto;gap:2px}.drawer a{justify-content:flex-start;padding:12px;border-left:3px solid transparent}.drawer a b{color:var(--accent);margin-right:12px;font-size:.75rem}.drawer a span{margin-left:auto}.drawer a.on{color:var(--accent);border-left-color:var(--accent);background:var(--glow)}.drawer a.hi{justify-content:center}
+.card[onclick]{cursor:pointer}
+.bg{background:radial-gradient(ellipse 45% 35% at 0% 0%,rgba(227,10,23,.14),transparent 70%),radial-gradient(ellipse 70% 55% at 85% 100%,var(--glow),transparent 70%),radial-gradient(ellipse 80% 60% at 40% 35%,var(--glow),transparent 75%),var(--bg)}
+.bg::before{inset:0;animation:none;opacity:.16;background-size:80px 80px}
+.bg>*{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.bg>.topo{opacity:.4;mask-image:radial-gradient(ellipse at 40% 40%,#000 20%,transparent 85%);-webkit-mask-image:radial-gradient(ellipse at 40% 40%,#000 20%,transparent 85%)}
+.bg>.radar{inset:auto -18vmin -18vmin auto;width:85vmin;height:85vmin;border-radius:50%;opacity:.2;background:conic-gradient(from 0deg,transparent 0 280deg,var(--accent) 360deg),repeating-radial-gradient(circle,transparent 0 9%,var(--accent) 9.2% 9.5%);mask-image:radial-gradient(circle,#000 50%,transparent 70%);-webkit-mask-image:radial-gradient(circle,#000 50%,transparent 70%);animation:sweep 9s linear infinite}
+@keyframes sweep{to{transform:rotate(360deg)}}
+.bg>.grain{opacity:.14;mix-blend-mode:overlay}
+.prof{display:flex;align-items:center;gap:18px;padding:40px 0 6px}.av{width:72px;height:72px;flex:none;background:var(--accent);color:var(--on);display:grid;place-items:center;font-size:2rem;font-weight:900;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}.prof h2{margin:4px 0 2px}.av{cursor:pointer;background-size:cover;background-position:center}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hit{max-width:760px;margin:0 auto;padding:30px 0 60px}.hit h2{text-align:center;margin-bottom:6px}.hit .sb{text-align:center;color:var(--accent);letter-spacing:.2em;font-size:.8rem;text-transform:uppercase;margin:0 0 30px}.hit p{font-size:1.08rem;line-height:1.9;margin:0 0 22px;text-align:justify}.hit .sg{text-align:right;color:var(--accent);font-weight:800;letter-spacing:.12em}
+select,textarea{width:100%;padding:13px 14px;background:var(--bg);color:var(--text);border:1px solid var(--line);font-size:1rem;font-family:inherit;outline:none}select:focus,textarea:focus{border-color:var(--accent)}textarea{resize:vertical}
+.qt{font-style:italic;font-size:1.05rem;color:var(--text);margin:0 0 10px}
+.drawer{visibility:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s .35s}.drawer.open{visibility:visible;transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s}.prof p{margin:0;color:var(--muted)}
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:8px}.qa a{background:var(--bg);border:1px solid var(--line);padding:14px 8px;text-align:center;font-weight:700;font-size:.85rem;cursor:pointer;color:var(--text);transition:.2s}.qa a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.ci{display:flex;align-items:center;gap:10px;font-size:.92rem;letter-spacing:0;text-transform:none;color:var(--muted);margin:0 0 10px;cursor:pointer}.ci input{width:18px;height:18px;padding:0;accent-color:var(--accent);flex:none}
+.bg>.vig{background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.3))}
+@media (prefers-reduced-motion:reduce){.bg>.radar{animation:none}}
+.clk{display:flex;flex-direction:column;align-items:center;line-height:1.25;font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;text-align:center}.clk b{font-size:1.05rem;color:var(--accent);letter-spacing:.12em;font-variant-numeric:tabular-nums}.clk b::after{content:" TSİ";font-size:.6rem;color:var(--muted)}
+@media (min-width:900px){.wrap{max-width:1180px;padding:0 32px}header{padding:14px 40px}.grid{grid-template-columns:repeat(3,1fr);gap:22px}.grid.g4{grid-template-columns:repeat(4,1fr)}.hero{min-height:88vh}.sub{font-size:1.2rem;max-width:640px}.card{padding:30px}.drawer{width:380px}h2{font-size:2rem}.stat b{font-size:2.6rem}.box{width:460px;padding:44px 40px}.cmds{grid-template-columns:repeat(3,1fr)}.clk{flex-direction:row;gap:16px;align-items:baseline;font-size:.8rem}.clk b{font-size:1.3rem}}.tg{display:inline-block;border:1px solid var(--accent2);color:var(--accent2);font-size:.65rem;letter-spacing:.2em;padding:2px 8px;margin-bottom:10px}
+details{background:var(--surface);border:1px solid var(--line);margin-bottom:10px}summary{padding:16px 18px;cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}summary::-webkit-details-marker{display:none}summary::after{content:"+";color:var(--accent);font-size:1.3rem;line-height:1}details[open] summary::after{content:"–"}details[open]{border-color:var(--accent)}details p{margin:0;padding:0 18px 16px;color:var(--muted)}
+footer{padding:30px 20px;text-align:center;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<div class="bg">
+<svg class="topo" xmlns="http://www.w3.org/2000/svg"><filter id="tp" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".0032" numOctaves="4" seed="11" result="n"/><feColorMatrix in="n" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0" result="r"/><feComponentTransfer in="r" result="b"><feFuncA type="discrete" tableValues="0 1 0 1 0 1 0 1 0 1 0 1 0 1"/></feComponentTransfer><feMorphology in="b" operator="erode" radius="1.1" result="e"/><feComposite in="b" in2="e" operator="out" result="l"/><feFlood flood-color="#7d9140"/><feComposite in2="l" operator="in"/></filter><rect width="100%" height="100%" filter="url(#tp)"/></svg>
+<div class="radar"></div>
+<canvas id="dust"></canvas>
+<svg class="grain" xmlns="http://www.w3.org/2000/svg"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values=".33 .33 .33 0 0 .33 .33 .33 0 0 .33 .33 .33 0 0 0 0 0 0 1"/></filter><rect width="100%" height="100%" filter="url(#gr)"/></svg>
+<div class="vig"></div>
+</div>
+<header>
+<div class="logo" onclick="go('anasayfa')"><i></i>ITM</div>
+<div class="clk"><span id="cd"></span><b id="ct"></b></div>
+<div class="burger" id="bg" aria-label="Menü" role="button" tabindex="0"><span></span><span></span><span></span></div>
+</header>
+<div class="ov" id="ov"></div>
+<nav class="drawer" id="dr"></nav>
+
+<main>
+<div class="view" id="v-anasayfa">
+<div class="wrap">
+<div class="hero">
+<span class="tag">International Turkish Military</span>
+<h1>ITM</h1>
+<p class="sub">Disiplin, strateji ve ekip ruhu. Gruba katıl, eğitimlerden geç, rütbe atla ve sahada görev yap.</p>
+<div><a class="btn" onclick="ext('game')">OYNA</a><a class="btn alt" onclick="go('hakkinda')">KEŞFET</a><a class="btn alt" onclick="ext('discord')">DISCORD</a><a class="btn alt" onclick="ext('roblox')">ROBLOX GRUBU</a></div>
+</div>
+<div class="stats">
+<div class="stat"><b id="mc" data-n="246">0</b><span>Grup Üyesi</span></div>
+<div class="stat"><b data-n="24">0</b><span>Saat Açık</span></div>
+<div class="stat" onclick="ext('game')" style="cursor:pointer"><b id="pc">Gör ↗</b><span>Oyundaki Oyuncular</span></div>
+</div>
+<div class="grid" style="padding:20px 0 50px">
+<div class="card" onclick="go('hakkinda')"><em>01</em><h3>Hakkında</h3><p>ITM’i ve amacımızı tanı.</p></div>
+<div class="card" onclick="go('branslar')"><em>02</em><h3>Branşlar</h3><p>Hizmet edeceğin branşı seç.</p></div>
+<div class="card" onclick="go('rehber')"><em>03</em><h3>Başlangıç Rehberi</h3><p>İlk günde ne yapacağını öğren.</p></div>
+</div>
+</div>
+</div>
+
+<div class="view" id="v-hakkinda"><div class="wrap">
+<section id="hakkinda">
+<h2>Hakkında</h2>
+<p>ITM (International Turkish Military), Roblox’ta Türk askerinin disiplinini ve onurunu yaşatan bir asker simülasyonudur. Oyuncular birlik düzeni içinde eğitim alır, ekip halinde görevlere katılır, grup içinde rütbe atlar ve toplulukla birlikte gelişir.</p>
+<div class="grid" style="margin-top:28px">
+<div class="card"><em>01</em><h3>Misyonumuz</h3><p>Adil, düzenli ve gerçekçi bir askeri RP ortamı sunmak.</p></div>
+<div class="card"><em>02</em><h3>Değerlerimiz</h3><p>Disiplin, saygı, ekip çalışması ve sorumluluk.</p></div>
+<div class="card"><em>03</em><h3>Hedefimiz</h3><p>Her oyuncunun kendini bir birliğin parçası hissetmesi.</p></div>
+</div>
+</section>
+</div></div>
+
+<div class="view" id="v-ozellikler"><div class="wrap">
+<section id="ozellikler">
+<h2>Özellikler</h2>
+<p>Seni sahaya hazırlayan her şey tek yerde.</p>
+<div class="grid">
+<div class="card"><em>01</em><h3>Eğitim Kampı</h3><p>Yeni askerler için temel eğitim ve silah kullanımı.</p></div>
+<div class="card"><em>02</em><h3>Taktik Görevler</h3><p>Ekip halinde oynanan operasyonlar ve senaryolar.</p></div>
+<div class="card"><em>03</em><h3>Rütbe Sistemi</h3><p>Gruba katıl, çalışkanlığınla rütbe atla ve komuta kademesine yükselerek yetkin bir asker ol.</p></div>
+<div class="card"><em>04</em><h3>Etkinlikler</h3><p>Düzenli turnuvalar, tatbikatlar ve özel günler.</p></div>
+<div class="card"><em>05</em><h3>Aktif Topluluk</h3><p>Duyurular ve sohbet için Discord sunucusu.</p></div>
+<div class="card"><em>06</em><h3>Güvenli Ortam</h3><p>Hile ve kural ihlallerine karşı aktif yetkili ekibi.</p></div>
+</div>
+</section>
+</div></div>
+
+<div class="view" id="v-branslar"><div class="wrap"><section>
+<h2>Branşlar</h2>
+<p>Hizmet edeceğin branşı seç ve onun gururunu taşı.</p>
+<div class="grid">
+<div class="card"><em>01</em><h3>Kara Kuvvetleri Komutanlığı</h3><p>Ana kara gücü. Piyade ve zırhlı birliklerle karada görev yapar.</p></div>
+<div class="card"><em>02</em><h3>Hava Kuvvetleri Komutanlığı</h3><p>Hava sahasını korur, uçak ve helikopterle destek verir.</p></div>
+<div class="card"><em>03</em><h3>Askeri İnzibat</h3><p>Disiplin, güvenlik ve kuralların uygulanmasından sorumludur.</p></div>
+<div class="card"><em>04</em><h3>Özel Kuvvetler Komutanlığı</h3><p>Zorlu ve gizli operasyonlar için seçilmiş, elit ekip.</p></div>
+<div class="card"><em>05</em><h3>Sınır Müfettişleri</h3><p>Sınır hattında devriye, gözetleme ve geçiş kontrolü yapar.</p></div>
+<div class="card"><em>06</em><h3>Jandarma Genel Komutanlığı</h3><p>Kırsal alanda asayiş ve iç güvenlik görevlerini yürütür.</p></div>
+</div>
+</section></div></div>
+
+<div class="view" id="v-hitabe"><div class="wrap"><section class="hit">
+<h2>Gençliğe Hitabe</h2>
+<div class="sb">Mustafa Kemal Atatürk · Nutuk, 1927</div>
+<p>Ey Türk gençliği! Birinci vazifen, Türk istiklalini, Türk Cumhuriyetini, ilelebet muhafaza ve müdafaa etmektir.</p>
+<p>Mevcudiyetinin ve istikbalinin yegâne temeli budur. Bu temel, senin en kıymetli hazinendir. İstikbalde dahi, seni bu hazineden mahrum etmek isteyecek dâhilî ve harîcî bedhahların olacaktır. Bir gün, istiklal ve cumhuriyeti müdafaa mecburiyetine düşersen, vazifeye atılmak için içinde bulunacağın vaziyetin imkân ve şeraitini düşünmeyeceksin! Bu imkân ve şerait, çok namüsait bir mahiyette tezahür edebilir. İstiklal ve cumhuriyetine kastedecek düşmanlar, bütün dünyada emsali görülmemiş bir galibiyetin mümessili olabilirler. Cebren ve hile ile aziz vatanın bütün kaleleri zaptedilmiş, bütün tersanelerine girilmiş, bütün orduları dağıtılmış ve memleketin her köşesi bilfiil işgal edilmiş olabilir. Bütün bu şeraitten daha elîm ve daha vahîm olmak üzere, memleketin dâhilinde iktidara sahip olanlar gaflet ve dalâlet ve hatta hıyanet içinde bulunabilirler. Hatta bu iktidar sahipleri şahsî menfaatlerini, müstevlilerin siyasî emelleriyle tevhit edebilirler. Millet, fakr u zaruret içinde harap ve bîtap düşmüş olabilir.</p>
+<p>Ey Türk istikbalinin evladı! İşte, bu ahval ve şerait içinde dahi, vazifen; Türk istiklal ve cumhuriyetini kurtarmaktır! Muhtaç olduğun kudret, damarlarındaki asil kanda mevcuttur!</p>
+<p class="sg">Mustafa Kemal Atatürk</p>
+</section></div></div>
+
+<div class="view" id="v-sozler"><div class="wrap"><section>
+<h2>Atatürk’ün Sözleri</h2>
+<p>Ulu Önder Mustafa Kemal Atatürk’ün bilinen sözlerinden bir seçki.</p>
+<div class="grid">
+<div class="card"><em>01</em><p class="qt">“Yurtta sulh, cihanda sulh.”</p><p>— Mustafa Kemal Atatürk</p></div>
+<div class="card"><em>02</em><p class="qt">“Ne mutlu Türk’üm diyene!”</p><p>— Mustafa Kemal Atatürk</p></div>
+<div class="card"><em>03</em><p class="qt">“Egemenlik kayıtsız şartsız milletindir.”</p><p>— Mustafa Kemal Atatürk</p></div>
+<div class="card"><em>04</em><p class="qt">“Hayatta en hakiki mürşit ilimdir, fendir.”</p><p>— Mustafa Kemal Atatürk</p></div>
+<div class="card"><em>05</em><p class="qt">“Bütün ümidim gençliktedir.”</p><p>— Mustafa Kemal Atatürk</p></div>
+<div class="card"><em>06</em><p class="qt">“Ordular, ilk hedefiniz Akdeniz’dir, ileri!”</p><p>— Mustafa Kemal Atatürk</p></div>
+<div class="card"><em>07</em><p class="qt">“Savaş, zorunlu ve hayati olmadıkça bir cinayettir.”</p><p>— Mustafa Kemal Atatürk</p></div>
+<div class="card"><em>08</em><p class="qt">“Muhtaç olduğun kudret, damarlarındaki asil kanda mevcuttur!”</p><p>— Mustafa Kemal Atatürk</p></div>
+<div class="card"><em>09</em><p class="qt">“Benim naçiz vücudum elbet bir gün toprak olacaktır, ancak Türkiye Cumhuriyeti ilelebet payidar kalacaktır.”</p><p>— Mustafa Kemal Atatürk</p></div>
+</div>
+</section></div></div>
+
+<div class="view" id="v-rehber"><div class="wrap"><section>
+<h2>Başlangıç Rehberi</h2>
+<p>Aramıza yeni katıldıysan buradan başla.</p>
+<ol class="rules">
+<li>Roblox grubumuza katıl. Rütbeler grup üzerinden verilir.</li>
+<li>Discord sunucusuna katıl, duyuruları ve etkinlikleri takip et.</li>
+<li>Oyuna gir ve oyundaki kuralları öğren.</li>
+<li>Bir branş seç ve temel eğitime katıl.</li>
+<li>Görevlere ve eğitimlere düzenli katıl.</li>
+<li>Çalışkanlığınla grup içinde rütbe atla ve komuta kademesine yüksel.</li>
+</ol>
+<div style="margin-top:28px"><a class="btn" onclick="ext('roblox')">GRUBA KATIL</a><a class="btn alt" onclick="ext('game')">OYUNA GİR</a><a class="btn alt" onclick="ext('discord')">DISCORD</a></div>
+</section></div></div>
+
+<div class="view" id="v-duyurular"><div class="wrap"><section>
+<h2>Duyurular</h2>
+<p>Birlikten son haberler.</p>
+<div class="grid">
+<div class="card"><span class="tg">YENİ</span><h3>V.1 geliyor!</h3><p>Yeni sürüm için geri sayım başladı.</p></div>
+<div class="card"><span class="tg">TRANSFER</span><h3>Transferler tam gaz devam ediyor!</h3><p>Aramıza katılan yeni askerlere hoş geldin.</p></div>
+<div class="card"><span class="tg">ALIM</span><h3>Alımlar açık</h3><p>Sen de başvur ve ITM’nin bir parçası ol.</p></div>
+</div>
+</section></div></div>
+
+<div class="view" id="v-sss"><div class="wrap"><section>
+<h2>Sıkça Sorulanlar</h2>
+<p>Aklına takılanların cevapları burada.</p>
+<details><summary>Nasıl katılırım?</summary><p>Roblox grubumuza katıl, oyuna gir ve Discord sunucumuza gel. Sitede Roblox adınla kayıt olarak hesabını oluşturabilirsin.</p></details>
+<details><summary>Rütbe nasıl atlarım?</summary><p>Gruba katıl, eğitim ve görevlere düzenli katıl. Çalışkanlığına göre grup içinde rütbe atlarsın.</p></details>
+<details><summary>Hesabımı başka cihazda kullanabilir miyim?</summary><p>Evet. Roblox adın ve şifrenle her cihazdan giriş yapabilirsin.</p></details>
+<details><summary>OOC nasıl konuşulur?</summary><p>Karakter dışı konuşmaları çift parantez içinde yaz: (( mesaj ))</p></details>
+<details><summary>Hile yapana ne olur?</summary><p>Hile ve exploit kullanımı kalıcı yasakla sonuçlanır.</p></details>
+<details><summary>Etkinlikler ne zaman?</summary><p>Tarihler Duyurular sayfasında ve Discord’da paylaşılır.</p></details>
+</section></div></div>
+
+<div class="view" id="v-giris">
+<div class="wrap login"><div class="box">
+<span class="badge">Güvenli Giriş</span>
+<h2 id="gh">Giriş Yap</h2>
+<p>Kayıt olurken belirlediğin Roblox adını ve şifreni gir.</p>
+<form id="lf" novalidate>
+<label for="u">Kullanıcı Adı</label><input id="u" autocomplete="username" placeholder="Roblox kullanıcı adın">
+<label for="p">Şifre</label><input id="p" type="password" autocomplete="current-password" placeholder="••••••••">
+<div class="err" id="er"></div>
+<button class="btn" type="submit">GİRİŞ YAP</button>
+</form>
+<div class="alt-l">Hesabın yok mu? <a onclick="go('kayit')">Kayıt Ol</a></div>
+<div class="alt-l"><a id="fg" onclick="forgot()">Şifremi unuttum</a></div>
+</div></div>
+</div>
+
+<div class="view" id="v-kayit">
+<div class="wrap login"><div class="box">
+<span class="badge">Yeni Asker</span>
+<h2>Kayıt Ol</h2>
+<p>Roblox kullanıcı adını yaz ve bir şifre belirle.</p>
+<form id="rf" novalidate>
+<label for="ru">Roblox Kullanıcı Adı</label><input id="ru" autocomplete="username" placeholder="Roblox adın">
+<label for="rp">Şifre</label><input id="rp" type="password" autocomplete="new-password" placeholder="En az 6 karakter">
+<label for="rp2">Şifre (Tekrar)</label><input id="rp2" type="password" autocomplete="new-password" placeholder="Şifreni tekrar yaz">
+<div class="err" id="rer"></div>
+<button class="btn" type="submit">KAYIT OL</button>
+</form>
+<div class="alt-l">Zaten hesabın var mı? <a onclick="go('giris')">Giriş Yap</a></div>
+</div></div>
+</div>
+
+<div class="view" id="v-panel">
+<div class="wrap">
+<div class="prof"><div><span class="badge">Çevrimiçi</span><h2 id="wn">Hoş geldin</h2><p>ITM Personeli · Göreve hazır ol!</p></div></div>
+<section style="padding-top:24px">
+<div class="card" id="pcard" style="margin-bottom:22px"><h3>Profilim</h3><div id="pview"></div>
+<div id="pedit" hidden><label for="pb">Branş</label><select id="pb"><option value="">Seçilmedi</option></select><label for="pd">Discord Kullanıcı Adı</label><input id="pd" maxlength="40" placeholder="kullanici_adi"><label for="pa">Hakkımda</label><textarea id="pa" maxlength="160" rows="3" placeholder="Kendinden kısaca bahset"></textarea><div style="margin-top:14px"><a class="btn" onclick="pfs()" style="margin:0 8px 0 0">KAYDET</a><a class="btn alt" onclick="pfc()" style="margin:0">İPTAL</a></div></div></div>
+<div class="grid">
+<div class="card"><em>❝</em><h3>Günün Sözü</h3><p style="font-style:italic;font-size:1.05rem;color:var(--text)">“Benim naçiz vücudum elbet bir gün toprak olacaktır, ancak Türkiye Cumhuriyeti ilelebet payidar kalacaktır.”</p><p style="margin-top:10px">— Mustafa Kemal Atatürk</p></div>
+<div class="card"><em>◆</em><h3>Hızlı Erişim</h3><div class="qa"><a onclick="ext('game')">Oyunu Oyna</a><a onclick="ext('discord')">Discord</a><a onclick="ext('roblox')">Roblox Grubu</a></div></div>
+<div class="card"><em>✓</em><h3>Göreve Hazırlık</h3><div id="ckl"></div></div>
+</div>
+<div style="margin-top:24px"><a class="btn alt" onclick="logout()">ÇIKIŞ YAP</a></div>
+</section>
+</div>
+</div>
+</main>
+<footer>© 2026 ITM · Bu proje Roblox Corporation ile bağlantılı değildir.</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script>
+/* === FIREBASE AYARLARI: README.md adım 3'te aldığın değerleri buraya yapıştır === */
+var FB={apiKey:'AIzaSyBC3uNvX_PY20_44QTWnRx0hDfZtnIkTto',authDomain:'askeri-6e3f2.firebaseapp.com',projectId:'askeri-6e3f2',storageBucket:'askeri-6e3f2.firebasestorage.app',messagingSenderId:'412669177334',appId:'1:412669177334:web:289c63f147a9956ac4ebd7'};
+firebase.initializeApp(FB);var auth=firebase.auth();auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+var L={game:'https://www.roblox.com/games/126548037864306',discord:'https://discord.gg/itmarmy',roblox:'https://www.roblox.com/communities/797562096/ITM-International-Turkish-Military'};
+function toast(t){var d=document.createElement('div');d.textContent=t;d.style.cssText='position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);transform:translateX(-50%);background:var(--surface);color:var(--text);border:1px solid var(--accent);padding:12px 20px;z-index:100;font-size:.9rem';document.body.appendChild(d);setTimeout(function(){d.remove()},2500)}
+function ext(k){closeM();if(L[k])window.open(L[k],'_blank','noopener');else toast('Bağlantı henüz eklenmedi.')}
+var user=null,ready=false,regging=false;
+function nm(u){return u?(u.displayName||u.email.split('@')[0]):null}
+function hasAcc(){try{return !!localStorage.getItem('itm_seen')}catch(e){return false}}
+function seen(){try{localStorage.setItem('itm_seen','1')}catch(e){}}
+function em(n){return n.toLowerCase()+'@itm-roblox.invalid'}
+var RB=['https://users.roproxy.com','https://users.rprxy.xyz'];
+function rb(u){var i=0;function nx(){if(i>=RB.length)return Promise.resolve(undefined);var c=new AbortController(),t=setTimeout(function(){c.abort()},6000);return fetch(RB[i++]+'/v1/usernames/users',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({usernames:[u],excludeBannedUsers:true}),signal:c.signal}).then(function(r){clearTimeout(t);if(!r.ok)throw 0;return r.json()}).then(function(d){return d.data&&d.data[0]?d.data[0].name:null}).catch(function(){clearTimeout(t);return nx()})}return nx()}
+function fe(c){var m={'auth/email-already-in-use':'Bu Roblox adı zaten kayıtlı.','auth/wrong-password':'Roblox adı veya şifre hatalı.','auth/user-not-found':'Roblox adı veya şifre hatalı.','auth/invalid-credential':'Roblox adı veya şifre hatalı.','auth/weak-password':'Şifre en az 6 karakter olmalı.','auth/too-many-requests':'Çok fazla deneme. Biraz bekleyip tekrar dene.','auth/network-request-failed':'Bağlantı hatası. İnternetini kontrol et.','auth/operation-not-allowed':'Firebase’de E-posta/Şifre girişi açık değil. (auth/operation-not-allowed)','auth/unauthorized-domain':'Bu site adresi Firebase’de yetkili alan adları listesinde yok. (auth/unauthorized-domain)','auth/invalid-api-key':'Firebase API anahtarı geçersiz. (auth/invalid-api-key)','auth/configuration-not-found':'Firebase’de Authentication henüz başlatılmamış. (auth/configuration-not-found)'};return m[c]||'Bir hata oluştu ('+c+'). Tekrar dene.'}
+var $=function(s){return document.querySelector(s)};
+var bg=$('#bg'),ov=$('#ov'),dr=$('#dr');
+function go(h){location.hash=h;closeM()}
+function sc(id){closeM();var f=function(){var e=document.getElementById(id);if(e)e.scrollIntoView()};if((location.hash.slice(1)||'anasayfa')!=='anasayfa'){location.hash='anasayfa';setTimeout(f,120)}else f()}
+function closeM(){bg.classList.remove('open');ov.classList.remove('open');dr.classList.remove('open')}
+function toggleM(){var o=!dr.classList.contains('open');bg.classList.toggle('open',o);ov.classList.toggle('open',o);dr.classList.toggle('open',o)}
+bg.onclick=toggleM;ov.onclick=closeM;
+bg.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleM()}};
+function menu(){
+var cur=location.hash.slice(1);
+var it=[['sozler','Atatürk’ün Sözleri'],['anasayfa','Ana Sayfa'],['hakkinda','Hakkında'],['ozellikler','Özellikler'],['branslar','Branşlar'],['rehber','Başlangıç Rehberi'],['duyurular','Duyurular'],['sss','SSS']];
+var h='<small>MENÜ</small>';
+if(user)h+='<a class="'+(cur==='hitabe'?'on':'')+'" onclick="go(\'hitabe\')">🇹🇷 Gençliğe Hitabe<span>›</span></a>';
+if(user)h+='<a class="'+(cur==='panel'?'on':'')+'" onclick="go(\'panel\')">★ Profilim <span>›</span></a>';
+if(user)it.forEach(function(x){h+='<a class="'+(cur===x[0]?'on':'')+'" onclick="go(\''+x[0]+'\')">'+x[1]+'<span>›</span></a>'});
+if(user)h+='<small style="margin-top:16px">TOPLULUK</small><a onclick="ext(\'game\')">Oyunu Oyna<span>↗</span></a><a onclick="ext(\'discord\')">Discord Sunucusu<span>↗</span></a><a onclick="ext(\'roblox\')">Roblox Grubu<span>↗</span></a>';
+h+='<small style="margin-top:16px">AYARLAR</small><a onclick="th()">Tema: '+(tn()==='dark'?'Koyu':'Açık')+'<span>◐</span></a>';
+h+=user?'<a class="hi" onclick="logout()">Çıkış Yap</a>':'<a onclick="go(\'kayit\')">Kayıt Ol <span>›</span></a><a class="hi" onclick="go(\'giris\')">Giriş Yap</a>';
+dr.innerHTML=h;kb()}
+function route(){
+var h=location.hash.slice(1);
+if(!h)h=user?'panel':(hasAcc()?'giris':'kayit');
+if(['anasayfa','hitabe','sozler','hakkinda','ozellikler','branslar','rehber','duyurular','sss','giris','kayit','panel'].indexOf(h)<0)h='anasayfa';
+if(!user&&h!=='giris'&&h!=='kayit')h=hasAcc()?'giris':'kayit';
+if((h==='giris'||h==='kayit')&&user)h='panel';
+if(location.hash.slice(1)!==h){try{history.replaceState(null,'','#'+h)}catch(e){location.hash=h}}
+document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('active',v.id==='v-'+h)});
+if(user){$('#wn').textContent='Hoş geldin, Asker';ck();pfv()}
+$('#gh').textContent=hasAcc()?'Tekrar hoş geldin!':'Giriş Yap';
+menu();window.scrollTo(0,0);if(h==='anasayfa')count()}
+function tw(e){var c=parseInt((e.textContent||'0').replace(/\D/g,''))||0;clearInterval(e._iv);e._iv=setInterval(function(){var t=+e.dataset.n;if(c===t){clearInterval(e._iv);return}c+=Math.sign(t-c)*Math.max(1,Math.ceil(Math.abs(t-c)/12));e.textContent=c.toLocaleString('tr-TR')},40)}
+function count(){document.querySelectorAll('[data-n]').forEach(function(e){e.textContent='0';tw(e)})}
+function setN(id,n){var e=document.getElementById(id);if(!e||typeof n!=='number')return;e.dataset.n=n;tw(e)}
+function jf(u){return fetch(u).then(function(r){if(!r.ok)throw 0;return r.json()})}
+function live(){
+jf('https://groups.roproxy.com/v1/groups/797562096').then(function(d){setN('mc',d.memberCount)}).catch(function(){});
+jf('https://apis.roproxy.com/universes/v1/places/126548037864306/universe').then(function(d){return jf('https://games.roproxy.com/v1/games?universeIds='+d.universeId)}).then(function(d){setN('pc',d.data[0].playing)}).catch(function(){})}
+live();setInterval(live,60000);
+function tn(){return document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}
+function th(){var n=tn()==='dark'?'light':'dark';document.documentElement.dataset.theme=n;try{localStorage.setItem('itm_th',n)}catch(e){}menu()}
+try{var st=localStorage.getItem('itm_th');if(st)document.documentElement.dataset.theme=st}catch(e){}
+function forgot(){toast('Şifreni sıfırlamak için Discord sunucumuzdan yetkililere ulaş.')}
+var BR=['Kara Kuvvetleri Komutanlığı','Hava Kuvvetleri Komutanlığı','Askeri İnzibat','Özel Kuvvetler Komutanlığı','Sınır Müfettişleri','Jandarma Genel Komutanlığı'];
+BR.forEach(function(x){var o=document.createElement('option');o.value=x;o.textContent=x;$('#pb').appendChild(o)});
+function pfk(){return 'itm_pf_'+user.toLowerCase()}
+function pfg(){var d={};try{d=JSON.parse(localStorage.getItem(pfk())||'{}')}catch(e){}return d}
+function pfv(){var d=pfg(),v=$('#pview');$('#pedit').hidden=true;v.innerHTML='';
+function t(tag,txt,st,cl){var e=document.createElement(tag);e.textContent=txt;if(st)e.style.cssText=st;if(cl)e.className=cl;v.appendChild(e)}
+t('div',user,'font-size:1.3rem;font-weight:800;margin-bottom:8px');
+if(d.b)t('span',d.b,'','tg');
+if(d.d)t('p','Discord: '+d.d,'margin:4px 0');
+if(d.a)t('p',d.a,'margin:8px 0;color:var(--text)');
+if(!d.b&&!d.d&&!d.a)t('p','Profilini henüz doldurmadın. Branşını, Discord adını ve kendin hakkında kısa bir yazı ekle.');
+var b=document.createElement('a');b.className='btn alt';b.textContent='PROFİLİ DÜZENLE';b.style.margin='14px 0 0';b.setAttribute('onclick','pfe()');v.appendChild(b);kb()}
+function pfe(){var d=pfg();$('#pb').value=d.b||'';$('#pd').value=d.d||'';$('#pa').value=d.a||'';$('#pview').innerHTML='';$('#pedit').hidden=false}
+function pfc(){pfv()}
+function pfs(){var d={b:$('#pb').value,d:$('#pd').value.trim().slice(0,40),a:$('#pa').value.trim().slice(0,160)};try{localStorage.setItem(pfk(),JSON.stringify(d))}catch(e){toast('Profil kaydedilemedi.');return}toast('Profil kaydedildi.');pfv()}
+var CK=['Discord sunucusuna katıl','Roblox grubuna katıl','Branşını seç','Eğitime katıl'];
+function ck(){var k='itm_ck_'+user.toLowerCase(),s=[];try{s=JSON.parse(localStorage.getItem(k)||'[]')}catch(e){}
+var b=$('#ckl');b.innerHTML='';CK.forEach(function(t,i){var l=document.createElement('label');l.className='ci';var c=document.createElement('input');c.type='checkbox';c.checked=s.indexOf(i)>-1;c.onchange=function(){var a=[];b.querySelectorAll('input').forEach(function(e,j){if(e.checked)a.push(j)});try{localStorage.setItem(k,JSON.stringify(a))}catch(x){}};l.appendChild(c);l.appendChild(document.createTextNode(t));b.appendChild(l)})}
+function logout(){closeM();auth.signOut().then(function(){location.hash='giris'})}
+$('#lf').onsubmit=function(e){e.preventDefault();var u=$('#u').value.trim(),p=$('#p').value;
+if(!u||!p){$('#er').textContent='Roblox adını ve şifreni yaz.';return}
+auth.signInWithEmailAndPassword(em(u),p).then(function(){seen();$('#er').textContent='';$('#p').value='';location.hash='panel'}).catch(function(x){$('#er').textContent=fe(x.code)})};
+$('#rf').onsubmit=function(e){e.preventDefault();
+var u=$('#ru').value.trim(),p=$('#rp').value,er=$('#rer');
+if(!/^[A-Za-z0-9_]{3,20}$/.test(u)){er.textContent='Roblox adı 3–20 karakter; harf, rakam veya _ olmalı.';return}
+if(p.length<6){er.textContent='Şifre en az 6 karakter olmalı.';return}
+if(p!==$('#rp2').value){er.textContent='Şifreler uyuşmuyor.';return}
+er.textContent='Roblox adı kontrol ediliyor...';
+rb(u).then(function(n){
+if(n===null){er.textContent='Bu Roblox kullanıcı adı bulunamadı. Gerçek Roblox adını yaz.';return}
+var un=n===undefined;if(!un)u=n;er.textContent='';regging=true;
+return auth.createUserWithEmailAndPassword(em(u),p).then(function(c){seen();return c.user.updateProfile({displayName:u})}).then(function(){return auth.signOut()}).then(function(){regging=false;user=null;$('#rp').value='';$('#rp2').value='';$('#u').value=u;toast(un?'Kayıt başarılı! (Roblox adı şu an doğrulanamadı.) Şimdi giriş yap.':'Kayıt başarılı! Şimdi giriş yap.');location.hash='giris';route()})
+}).catch(function(x){regging=false;er.textContent=x&&x.code?fe(x.code):'Roblox adı doğrulanamadı. Biraz sonra tekrar dene.'})};
+window.addEventListener('hashchange',function(){if(ready)route()});
+function tick(){var n=new Date(),o={timeZone:'Europe/Istanbul'};try{$('#cd').textContent=n.toLocaleDateString('tr-TR',Object.assign({day:'numeric',month:'long',weekday:'long'},o));$('#ct').textContent=n.toLocaleTimeString('tr-TR',Object.assign({hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false},o))}catch(e){}}
+tick();setInterval(tick,1000);
+(function(){var c=document.getElementById('dust');if(!c||matchMedia('(prefers-reduced-motion:reduce)').matches)return;var x=c.getContext('2d'),w,h,p=[];function rs(){w=c.width=innerWidth;h=c.height=innerHeight}rs();addEventListener('resize',rs);for(var i=0;i<45;i++)p.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.4,s:Math.random()*.35+.1,d:Math.random()*2-1});
+function f(){if(!document.hidden){x.clearRect(0,0,w,h);x.fillStyle='rgba(205,165,45,.4)';p.forEach(function(q){q.y-=q.s;q.x+=q.d*.15;if(q.y<-5){q.y=h+5;q.x=Math.random()*w}x.beginPath();x.arc(q.x,q.y,q.r,0,6.3);x.fill()})}requestAnimationFrame(f)}f()})();
+function kb(){document.querySelectorAll('[onclick]').forEach(function(e){if(!e.hasAttribute('tabindex')){e.tabIndex=0;e.setAttribute('role','button')}})}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();if(e.key==='Enter'&&e.target!==bg&&e.target.getAttribute&&e.target.getAttribute('role')==='button')e.target.click()});
+auth.onAuthStateChanged(function(u){if(regging)return;user=nm(u);ready=true;route()});
+</script>
+</body>
+</html>
